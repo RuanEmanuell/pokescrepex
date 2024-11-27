@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -6,8 +7,13 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.css'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, CommonModule]
 })
 export class SearchInputComponent {
-  inputValue : String = "";
+  @Input() inputValue : string = "";
+  @Output() inputValueChange = new EventEmitter<string>();
+
+  onInputChange(value: string){
+    this.inputValueChange.emit(value);
+  }
 }

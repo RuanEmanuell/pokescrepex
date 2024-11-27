@@ -1,1 +1,7 @@
-<app-search-input></app-search-input>
+<app-search-input [(inputValue)]="inputValue"></app-search-input>
+<div *ngIf="pokemon != null">
+    <p class="text-3xl">{{pokemon.name}} #{{pokemon.dexId}}</p>
+    <p class="text-3xl">{{pokemon.type1}} {{pokemon.type2 ? ' - ' + pokemon.type2 : '' }}</p>
+    <img src="{{pokemon.sprite}}">
+</div>
+<button (click)="fetchPokemonData()" class="border-2 w-32 h-10">Pegar pokémon</button>
